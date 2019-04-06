@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="data.xsl"?>
+<catalog>
+
+    <cd>
+      <title>Goku And Vegeta</title>
+      <artist>Priyam Garg</artist>
+      <email>gargpriyam21@gmail.com</email>
+      <country>India</country>
+      <type>Sketch</type>
+    </cd>
+
+    <cd>
+      <title>Majin Vegeta</title>
+      <artist>Priyam Garg</artist>
+      <email>gargpriyam21@gmail.com</email>
+      <country>India</country>
+      <type>Sketch</type>
+    </cd>
+
+    <cd>
+      <title>Gotenks SSJ3</title>
+      <artist>Priyam Garg</artist>
+      <email>gargpriyam21@gmail.com</email>
+      <country>India</country>
+      <type>Painting</type>
+    </cd>
+
+    <cd>
+      <title>Goku SSJ3</title>
+      <artist>Priyam Garg</artist>
+      <email>gargpriyam21@gmail.com</email>
+      <country>India</country>
+      <type>Sketch</type>
+    </cd>
+
+    <cd>
+      <title>Ken Kaneki</title>
+      <artist>Priyam Garg</artist>
+      <email>gargpriyam21@gmail.com</email>
+      <country>India</country>
+      <type>Sketch</type>
+    </cd>
+
+    <cd>
+      <title>Goku And Goku Black</title>
+      <artist>Ayush Tanwar</artist>
+      <email>ayushtw@gmail.com</email>
+      <country>India</country>
+      <type>Painting</type>
+    </cd>
+
+</catalog>
+

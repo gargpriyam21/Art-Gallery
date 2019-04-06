@@ -1,0 +1,93 @@
+<html>
+
+    <head>
+        <title>Photo Gallery</title>
+
+        <script src="EmailVal.js"></script>
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body align="center" />
+
+        <div class="container light-bg">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title">
+                        <h2>Photo Upload</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <form name = "form1" method="post" action="#" onSubmit="return formValidation()">
+                    <center><input  
+                            type="text"
+                            name="first_name"
+                            placeholder="First Name">
+                    </center><br>
+
+                    <center><input  
+                            type="text"
+                            name="last_name"
+                            placeholder="Last Name">
+                    </center><br>
+
+                    <center><input  
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="E-mail">
+                    </center><br>
+
+                    <center><input  
+                            type="tel"
+                            name="tel"
+                            id="number"
+                            placeholder="Mobile">
+                    </center><br>
+
+                    <label>
+                        File: 
+                    </label>
+                    <input type="file" value="file" name="file" />
+
+                    <input type="hidden" value="hidden" name="hidden" />
+
+                    <fieldset>
+                        <legend>
+                            Photo Type: 
+                        </legend>
+
+                        <label> Sketch:
+                            <input type="checkbox" value="checkbox1" name="checkgroup[]" />
+                        </label>
+                        <br>
+
+                        <label> Painting:
+                            <input type="checkbox" value="checkbox2" name="checkgroup[]" />
+                        </label>
+                        <br>
+
+                        <label> Potrait:
+                            <input type="checkbox" value="checkbox3" name="checkgroup[]" />
+                        </label>
+                        <br>
+
+                        <label> Landscape:
+                            <input type="checkbox" value="checkbox4" name="checkgroup[]" />
+                        </label>
+                        <br>
+
+                    </fieldset>
+
+                    <input onclick="formValidation()" type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+        </div>
+        </div> 
+
+    </body>
+
+</html>

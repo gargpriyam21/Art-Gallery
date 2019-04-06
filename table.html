@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <title>Photo Gallery</title>
+
+    <script>
+function sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  
+  while (switching) {
+ 
+    switching = false;
+    rows = table.rows;
+ 
+    for (i = 1; i < (rows.length - 1); i++) {
+
+      shouldSwitch = false;
+ 
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+ 
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+ 
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
+</head>
+
+<body background=" BIM.jpg" align="center">
+    <h1>
+        Welcome To My Photo Gallery</h1>
+</body>
+<br>
+
+<table align="center" width=100% cellpadding="10" cellspacing="10" border="1">
+
+    <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Email</th>
+        <th>Type</th>
+    </tr>
+
+    <tr>
+        <td> Goku & Vegeta </td>
+        <td> Priyam Garg </td>
+        <td> gargpriyam21@gmail.com </td>
+        <td> Sketch </td>
+    </tr>
+
+    <tr>
+        <td> Majin Vegeta </td>
+        <td> Priyam Garg </td>
+        <td> gargpriyam21@gmail.com </td>
+        <td> Sketch </td>
+    </tr>
+
+    <tr>
+        <td> Gotenks SSJ3 </td>
+        <td> Priyam Garg </td>
+        <td> gargpriyam21@gmail.com </td>
+        <td> Painting </td>
+    </tr>
+
+    <tr>
+        <td> Goku SSJ3 </td>
+        <td> Priyam Garg </td>
+        <td> gargpriyam21@gmail.com </td>
+        <td> Sketch </td>
+    </tr>
+
+    <tr>
+        <td> Ken Kaneki </td>
+        <td> Priyam Garg </td>
+        <td> gargpriyam21@gmail.com </td>
+        <td> Sketch </td>
+    </tr>
+
+    <tr>
+        <td> Goku & Goku Black </td>
+        <td> Ayush Tanwar </td>
+        <td> ayushtw@gmail.com </td>
+        <td> Painting </td>
+    </tr>
+
+</table>
+
+</html>
