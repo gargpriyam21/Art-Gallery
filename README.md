@@ -1,3 +1,3 @@
 # Art-Gallery
 
-College Project to create a website to showcase my projects
+College Project to create a website to showcase my sketches
