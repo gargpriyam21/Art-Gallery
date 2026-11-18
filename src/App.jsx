@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Maximize2, Moon, RotateCcw, Sun } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ChevronDown, Maximize2, Moon, RotateCcw, Sun } from 'lucide-react';
 import Sketchbook from './components/Sketchbook.jsx';
 import CloseView from './components/CloseView.jsx';
 import Ruler from './components/Ruler.jsx';
@@ -164,6 +164,9 @@ export default function App() {
           </div>
 
           <Ruler artworks={artworks} page={page} onPick={setPage} />
+          <a className="scroll-hint" href="#pages">
+            Scroll for the gallery <ChevronDown size={16} strokeWidth={2.5} aria-hidden="true" />
+          </a>
         </section>
 
         <section className="pages" id="pages" aria-labelledby="pages-title">
@@ -214,7 +217,17 @@ export default function App() {
         <p>© {new Date().getFullYear()} Priyam Garg. These are fan drawings; the characters belong to their creators.</p>
       </footer>
 
-      <CloseView index={closeUp} artworks={artworks} onClose={() => setCloseUp(null)} onMove={(p) => { setCloseUp(p); setPage(p); }} />
+      <CloseView
+        index={closeUp}
+        artworks={artworks}
+        reducedMotion={reducedMotion}
+        getOrigin={() => deskRef.current?.querySelector('.book')?.getBoundingClientRect()}
+        onClose={() => setCloseUp(null)}
+        onMove={(p) => {
+          setCloseUp(p);
+          setPage(p);
+        }}
+      />
     </>
   );
 }

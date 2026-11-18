@@ -793,6 +793,51 @@ p {
   overflow: visible;
 }
 
+.props-band {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: var(--band);
+}
+.props-band--top {
+  top: 0;
+}
+.props-band--bottom {
+  bottom: 0;
+}
+.desk-props--bands .prop {
+  transition: opacity 400ms var(--ease), translate 320ms var(--ease), rotate 320ms var(--ease);
+}
+.desk-props--bands.is-hidden .prop {
+  opacity: 0;
+}
+
+/* phones: a nudge toward the gallery under the first screen */
+.scroll-hint {
+  display: none;
+}
+@media (max-width: 560px) {
+  .scroll-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 4px 0 max(10px, env(safe-area-inset-bottom));
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--mat-ink-2);
+    text-decoration: none;
+  }
+  .scroll-hint svg {
+    animation: hint-bob 1.8s var(--ease) infinite;
+  }
+}
+@keyframes hint-bob {
+  50% {
+    translate: 0 3px;
+  }
+}
+
 /* ---------- caption under the book ---------- */
 
 .caption {
@@ -1134,9 +1179,9 @@ p {
   margin: 0 auto;
 }
 
-/* ---------- close view ---------- */
+/* ---------- look closer: the torn sheet on a light table ---------- */
 
-.closeview {
+.lightbox {
   margin: 0;
   padding: 0;
   border: 0;
@@ -1145,78 +1190,255 @@ p {
   height: 100dvh;
   max-height: 100dvh;
   background: transparent;
-  color: var(--mat-ink);
+  color: #eef1f6;
   overflow: hidden;
+  /* same in both themes: graphite dark so the paper is the brightest thing */
+  --lb-ink: #eef1f6;
+  --lb-ink-2: #aeb6c4;
+  --lb-glass: rgba(16, 18, 23, 0.72);
 }
-.closeview[open] {
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+.lightbox[open] {
+  display: block;
 }
-.closeview::backdrop {
-  background: var(--scrim);
+.lightbox::backdrop {
+  background:
+    radial-gradient(60% 55% at 50% 48%, rgba(255, 248, 230, 0.09), transparent 70%),
+    #0c0e12;
+  animation: lb-fade 420ms var(--ease) both;
 }
-.closeview__frame {
-  min-height: 0;
+.lightbox.is-leaving::backdrop {
+  animation: lb-fade-out 460ms ease-in both;
+}
+
+.lightbox__table {
+  position: absolute;
+  inset: 0;
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: clamp(56px, 9vh, 88px) clamp(12px, 5vw, 96px) clamp(84px, 12vh, 112px);
   overflow: auto;
   overscroll-behavior: contain;
+  touch-action: pan-y pinch-zoom;
 }
-.closeview__frame img {
-  max-height: 100%;
+.lightbox__table.is-zoomed {
+  place-items: start center;
+  padding: 16px;
+}
+
+/* the sheet itself: paper colour around the drawing, a ragged top edge,
+   and a soft contact shadow on the light table */
+.torn {
+  margin: 0;
+  position: relative;
+  background: var(--paper, #f7f7f6);
+  padding: clamp(14px, 2.6vmin, 26px) clamp(10px, 2vmin, 22px) clamp(10px, 2vmin, 22px);
+  padding-top: calc(clamp(14px, 2.6vmin, 26px) + 10px);
+  transform-origin: 50% 50%;
+  will-change: transform;
+  line-height: 0;
+}
+.lightbox__table:not(.is-zoomed) .torn {
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5)) drop-shadow(0 28px 40px rgba(0, 0, 0, 0.55));
+}
+.torn img {
+  display: block;
   width: auto;
   height: auto;
-  max-width: 100%;
-  object-fit: contain;
+  max-width: calc(100vw - 2 * clamp(12px, 5vw, 96px) - 2 * clamp(10px, 2vmin, 22px));
+  max-height: calc(100dvh - clamp(56px, 9vh, 88px) - clamp(84px, 12vh, 112px) - 2 * clamp(14px, 2.6vmin, 26px) - 10px);
+  user-select: none;
+  -webkit-user-select: none;
   cursor: zoom-in;
-  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.8);
-  animation: rise 420ms var(--ease) both;
+  animation: lb-sheet 360ms var(--ease) both;
 }
-.closeview__frame.is-zoomed {
-  place-items: start center;
-}
-.closeview__frame.is-zoomed img {
-  max-height: none;
+.lightbox__table.is-zoomed .torn img {
   max-width: none;
-  width: min(1600px, 200vw);
+  max-height: none;
+  width: min(1600px, 220vw);
   cursor: zoom-out;
   animation: none;
 }
-.closeview__bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px 24px;
-  padding: 14px var(--gutter) max(16px, env(safe-area-inset-bottom));
-  background: var(--mat-deep);
-  border-top: 1px solid var(--grid-hi);
+
+/* controls float over the dark table and fade away when idle */
+.lightbox__close,
+.lightbox__nav,
+.lightbox__label,
+.lightbox__hint {
+  position: fixed;
+  z-index: 2;
+  transition: opacity 400ms var(--ease), translate 400ms var(--ease);
 }
-.closeview__bar p {
-  margin: 0;
-  display: grid;
+.lightbox.is-idle .lightbox__close,
+.lightbox.is-idle .lightbox__nav,
+.lightbox.is-idle .lightbox__label,
+.lightbox.is-idle .lightbox__hint,
+.lightbox.is-leaving .lightbox__close,
+.lightbox.is-leaving .lightbox__nav,
+.lightbox.is-leaving .lightbox__label {
+  opacity: 0;
+  pointer-events: none;
 }
-.closeview__bar b {
-  font-family: var(--stamp);
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  line-height: 1.1;
-}
-.closeview__bar span {
-  color: var(--mat-ink-2);
-  font-size: 0.9375rem;
-}
-.closeview__controls {
-  display: flex;
-  gap: 8px;
+.lightbox.is-idle .lightbox__label {
+  translate: -50% 8px;
 }
 
-@keyframes rise {
+.lightbox__close,
+.lightbox__nav,
+.lightbox__zoom {
+  appearance: none;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--lb-glass);
+  color: var(--lb-ink);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background-color 160ms var(--ease), border-color 160ms var(--ease), opacity 400ms var(--ease), translate 400ms var(--ease);
+}
+.lightbox__close:hover,
+.lightbox__nav:hover:not(:disabled),
+.lightbox__zoom:hover {
+  background: rgba(40, 44, 54, 0.9);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.lightbox__close {
+  top: max(14px, env(safe-area-inset-top));
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+.lightbox__nav {
+  top: 50%;
+  translate: 0 -50%;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.lightbox__nav--prev {
+  left: 14px;
+}
+.lightbox__nav--next {
+  right: 14px;
+}
+.lightbox__nav:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+.lightbox.is-idle .lightbox__nav:disabled {
+  opacity: 0;
+}
+
+/* a museum label under the sheet */
+.lightbox__label {
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  translate: -50% 0;
+  width: max-content;
+  max-width: calc(100vw - 24px);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 10px 10px 18px;
+  border-radius: 10px;
+  background: var(--lb-glass);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.lightbox__label p {
+  margin: 0;
+  display: grid;
+  line-height: 1.2;
+  min-width: 0;
+}
+.lightbox__label b {
+  font-family: var(--stamp);
+  font-weight: 800;
+  font-size: 1.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.lightbox__label span {
+  color: var(--lb-ink-2);
+  font-size: 0.875rem;
+}
+.lightbox__zoom {
+  display: inline-flex;
+  gap: 6px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.lightbox__hint {
+  top: max(22px, env(safe-area-inset-top));
+  left: 50%;
+  translate: -50% 0;
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--lb-ink-2);
+  white-space: nowrap;
+}
+.lightbox :focus-visible {
+  outline-color: #ffd766;
+}
+
+/* touch screens swipe instead of using side arrows, and get the gesture hint */
+@media (pointer: coarse) {
+  .lightbox__nav {
+    display: none;
+  }
+}
+@media (pointer: fine) {
+  .lightbox__hint {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .lightbox__label {
+    left: 12px;
+    right: 12px;
+    width: auto;
+    translate: none;
+    justify-content: space-between;
+    gap: 10px;
+    padding-left: 14px;
+  }
+  .lightbox.is-idle .lightbox__label {
+    translate: 0 8px;
+  }
+  .lightbox__label b {
+    font-size: 1.125rem;
+  }
+  .lightbox__label span {
+    font-size: 0.8125rem;
+  }
+  .lightbox__table {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .torn img {
+    max-width: calc(100vw - 20px - 2 * clamp(10px, 2vmin, 22px));
+  }
+}
+
+@keyframes lb-fade {
   from {
     opacity: 0;
-    transform: translateY(14px) scale(0.985);
+  }
+}
+@keyframes lb-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes lb-sheet {
+  from {
+    opacity: 0.4;
   }
 }
 
@@ -1226,16 +1448,15 @@ p {
   :root {
     --mast: 56px;
   }
-  /* on a phone, size the desk to the turned-sideways book so landscape pages
-     don't float in a tall empty field */
+  /* on a phone the desk fills the first screen: the book in the middle,
+     supplies in the space above and below, controls near the thumb */
   .desk {
-    height: auto;
-    min-height: 0;
-    grid-template-rows: auto auto auto;
+    height: calc(100svh - var(--mast));
+    min-height: 540px;
+    grid-template-rows: minmax(0, 1fr) auto auto auto;
   }
   .stage {
-    padding: 16px var(--gutter) 12px;
-    transition: height 720ms var(--ease);
+    padding: 8px var(--gutter);
   }
   .masthead {
     gap: 10px;
@@ -1280,12 +1501,6 @@ p {
   }
   .contact-sheet li {
     flex-basis: 100%;
-  }
-  .closeview__controls {
-    width: 100%;
-  }
-  .closeview__controls .btn--pencil {
-    margin-left: auto;
   }
 }
 

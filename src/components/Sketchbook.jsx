@@ -50,17 +50,15 @@ export default function Sketchbook({ artworks, page, onPageChange, reducedMotion
     return () => ro.disconnect();
   }, []);
 
-  // On a phone the book is width-bound, and the stage grows and shrinks with
-  // the book: short for landscape pages, tall when the pad turns sideways.
-  const H = Math.max(0, narrow ? box.w / RATIO : Math.min(box.w / RATIO, box.h / (1 + SPIRAL)));
+  const H = Math.max(0, Math.min(box.w / RATIO, box.h / (1 + SPIRAL)));
   const W = H * RATIO;
   const footprintH = H * (1 + SPIRAL);
-  const maxTall = typeof window === 'undefined' ? 600 : Math.max(footprintH, window.innerHeight - 270);
-  const rotScale = H ? Math.min(box.w / footprintH, (narrow ? maxTall : box.h) / W) : 1;
+  const rotScale = H ? Math.min(box.w / footprintH, box.h / W) : 1;
   const scale = rotated ? rotScale : 1;
   // empty mat either side of the book, for the pencils
   const side = H ? (box.w - (rotated ? footprintH * rotScale : W)) / 2 : 0;
-  const stageHeight = narrow && H ? (rotated ? W * rotScale : footprintH) + 28 : undefined;
+  // on a phone, the empty mat above and below the book holds the pencils instead
+  const band = H ? (box.h - (rotated ? W * rotScale : footprintH)) / 2 : 0;
 
   // ---- drawing the sheets ---------------------------------------------
   // Only the sheets you can actually see are rendered: the top flat page and
@@ -239,8 +237,9 @@ export default function Sketchbook({ artworks, page, onPageChange, reducedMotion
   const near = (i) => seen.current.has(i);
 
   return (
-    <div className="stage" ref={stageRef} style={stageHeight ? { height: stageHeight } : undefined}>
-      {side >= 150 && <DeskProps side={side} scale={H / 600} />}
+    <div className="stage" ref={stageRef}>
+      {!narrow && side >= 150 && <DeskProps side={side} scale={H / 600} />}
+      {narrow && <DeskProps layout="bands" band={band} scale={box.w / 430} />}
       <div
         ref={bookRef}
         className="book"

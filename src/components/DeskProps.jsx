@@ -67,9 +67,35 @@ const COLOURS = {
   purple: { body: '#7b4fc4', dark: '#5a3696', light: '#9a72dc', tip: '#6c43b2' },
 };
 
-export default function DeskProps({ side, scale }) {
-  // `side` is the width of the empty mat beside the book; `scale` sizes the props to the book.
+export default function DeskProps({ side, band, scale, layout = 'sides' }) {
+  // `side` is the width of the empty mat beside the book (laptops); `band` is the
+  // height of the empty mat above and below it (phones); `scale` sizes the props.
   const s = Math.max(0.7, Math.min(1.25, scale));
+  if (layout === 'bands') {
+    // a pencil and an eraser above the book, the marker and a pencil below;
+    // each band only shows when it is deep enough, so a sideways pad hides them
+    const show = band >= 54;
+    return (
+      <div className={`desk-props desk-props--bands${show ? '' : ' is-hidden'}`} aria-hidden="true" style={{ '--band': `${Math.max(0, band)}px`, '--s': Math.min(1, s) }}>
+        <div className="props-band props-band--top">
+          <span className="prop" style={{ '--x': '36%', '--y': '52%', '--r': '-8deg' }}>
+            <Pencil body="#f6c33b" dark="#c79515" light="#ffd965" tip="#2b2d31" eraser label="PALS · HB" />
+          </span>
+          <span className="prop prop--small" style={{ '--x': '84%', '--y': '46%', '--r': '12deg' }}>
+            <Eraser />
+          </span>
+        </div>
+        <div className="props-band props-band--bottom">
+          <span className="prop" style={{ '--x': '30%', '--y': '40%', '--r': '6deg' }}>
+            <Marker cap="#1f1f22" label="FINE LINER" />
+          </span>
+          <span className="prop" style={{ '--x': '70%', '--y': '62%', '--r': '-5deg' }}>
+            <Pencil {...COLOURS.red} />
+          </span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="desk-props" aria-hidden="true" style={{ '--side': `${side}px`, '--s': s }}>
       <div className="props-zone props-zone--left">
