@@ -1,0 +1,784 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T07:18:10+00:00",
+  "title": "Design System: PALS Art Gallery",
+  "extensions": {
+    "themes": {
+      "attribute": "html[data-theme]",
+      "values": [
+        "dark",
+        "light"
+      ],
+      "default": "prefers-color-scheme, then localStorage key pals-theme",
+      "themeColor": {
+        "dark": "#1c4c8a",
+        "light": "#dde8f5"
+      },
+      "note": "Frontmatter keys without a suffix are the dark (cobalt) theme; keys ending -light are the light (drafting) theme. Both map to the same CSS custom property."
+    },
+    "colorMeta": {
+      "mat": {
+        "role": "neutral",
+        "displayName": "Cobalt Mat",
+        "canonical": "#1c4c8a",
+        "cssVar": "--mat",
+        "theme": "dark",
+        "oklch": "oklch(41.9% 0.115 256.4)",
+        "tonalRamp": [
+          "#000a20",
+          "#0c2648",
+          "#224574",
+          "#3a67a3",
+          "#5f8bc7",
+          "#8bb0e3",
+          "#b5d3fd",
+          "#d8f1ff"
+        ]
+      },
+      "mat-deep": {
+        "role": "neutral",
+        "displayName": "Deep Mat (dark)",
+        "canonical": "#163e72",
+        "cssVar": "--mat-deep",
+        "theme": "dark",
+        "oklch": "oklch(36.6% 0.100 256.4)",
+        "tonalRamp": [
+          "#010b1e",
+          "#112744",
+          "#28466e",
+          "#41679c",
+          "#658bbf",
+          "#90b0dc",
+          "#b9d3f7",
+          "#dbf0ff"
+        ]
+      },
+      "mat-ink": {
+        "role": "neutral",
+        "displayName": "Mat Ink (dark)",
+        "canonical": "#f0f5fc",
+        "cssVar": "--mat-ink",
+        "theme": "dark",
+        "oklch": "oklch(96.8% 0.011 256.7)",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#24272a",
+          "#42454a",
+          "#62666c",
+          "#85898f",
+          "#abaeb3",
+          "#ced1d5",
+          "#eceff2"
+        ]
+      },
+      "mat-ink-2": {
+        "role": "neutral",
+        "displayName": "Faded Mat Ink (dark)",
+        "canonical": "#c8d9f0",
+        "cssVar": "--mat-ink-2",
+        "theme": "dark",
+        "oklch": "oklch(88.0% 0.037 256.0)",
+        "tonalRamp": [
+          "#070b12",
+          "#1f2732",
+          "#3b4655",
+          "#59677a",
+          "#7c8a9d",
+          "#a3afbf",
+          "#c8d2df",
+          "#e7effa"
+        ]
+      },
+      "mat-line": {
+        "role": "neutral",
+        "displayName": "Mat Line (dark)",
+        "canonical": "rgb(200, 222, 250)",
+        "cssVar": "--line",
+        "theme": "dark",
+        "note": "Translucent or channel-only value (CSS stores --line and --shade as bare r, g, b and applies alpha at use); no ramp."
+      },
+      "mat-shade": {
+        "role": "neutral",
+        "displayName": "Mat Shade (dark)",
+        "canonical": "rgb(3, 12, 30)",
+        "cssVar": "--shade",
+        "theme": "dark",
+        "note": "Translucent or channel-only value (CSS stores --line and --shade as bare r, g, b and applies alpha at use); no ramp."
+      },
+      "mat-grid": {
+        "role": "neutral",
+        "displayName": "Mat Grid (dark)",
+        "canonical": "rgba(200, 222, 250, 0.07)",
+        "cssVar": "--grid",
+        "theme": "dark",
+        "note": "Translucent or channel-only value (CSS stores --line and --shade as bare r, g, b and applies alpha at use); no ramp."
+      },
+      "mat-grid-hi": {
+        "role": "neutral",
+        "displayName": "Mat Grid Heavy (dark)",
+        "canonical": "rgba(200, 222, 250, 0.15)",
+        "cssVar": "--grid-hi",
+        "theme": "dark",
+        "note": "Translucent or channel-only value (CSS stores --line and --shade as bare r, g, b and applies alpha at use); no ramp."
+      },
+      "accent-text": {
+        "role": "primary",
+        "displayName": "Pencil Text (dark)",
+        "canonical": "#ffd766",
+        "cssVar": "--accent-text",
+        "theme": "dark",
+        "oklch": "oklch(89.2% 0.138 89.9)",
+        "tonalRamp": [
+          "#150800",
+          "#372300",
+          "#5b4000",
+          "#836000",
+          "#a68516",
+          "#c7ab60",
+          "#e5cf95",
+          "#ffedbf"
+        ]
+      },
+      "scrim": {
+        "role": "neutral",
+        "displayName": "Scrim (dark)",
+        "canonical": "rgba(8, 22, 46, 0.95)",
+        "cssVar": "--scrim",
+        "theme": "dark",
+        "note": "Translucent or channel-only value (CSS stores --line and --shade as bare r, g, b and applies alpha at use); no ramp."
+      },
+      "mat-light": {
+        "role": "neutral",
+        "displayName": "Drafting Mat",
+        "canonical": "#dde8f5",
+        "cssVar": "--mat",
+        "theme": "light",
+        "oklch": "oklch(92.7% 0.021 252.5)",
+        "tonalRamp": [
+          "#080b0f",
+          "#22272d",
+          "#3f464e",
+          "#5e6772",
+          "#818a95",
+          "#a7afb8",
+          "#cbd2d9",
+          "#eaeff5"
+        ]
+      },
+      "mat-deep-light": {
+        "role": "neutral",
+        "displayName": "Deep Mat (light)",
+        "canonical": "#cddcef",
+        "cssVar": "--mat-deep",
+        "theme": "light",
+        "oklch": "oklch(88.9% 0.031 254.3)",
+        "tonalRamp": [
+          "#070b11",
+          "#202730",
+          "#3c4652",
+          "#5b6777",
+          "#7e8a9a",
+          "#a5afbc",
+          "#c9d2dd",
+          "#e8eff8"
+        ]
+      },
+      "mat-ink-light": {
+        "role": "neutral",
+        "displayName": "Mat Ink (light)",
+        "canonical": "#0f2440",
+        "cssVar": "--mat-ink",
+        "theme": "light",
+        "oklch": "oklch(25.9% 0.059 256.3)",
+        "tonalRamp": [
+          "#050b16",
+          "#1a2738",
+          "#35465e",
+          "#516886",
+          "#758ba9",
+          "#9db0ca",
+          "#c3d2e8",
+          "#e3f0ff"
+        ]
+      },
+      "mat-ink-2-light": {
+        "role": "neutral",
+        "displayName": "Faded Mat Ink (light)",
+        "canonical": "#344e70",
+        "cssVar": "--mat-ink-2",
+        "theme": "light",
+        "oklch": "oklch(41.9% 0.065 255.5)",
+        "tonalRamp": [
+          "#040b17",
+          "#19273a",
+          "#324660",
+          "#4e6889",
+          "#728bac",
+          "#9ab0cc",
+          "#c1d3ea",
+          "#e2f0ff"
+        ]
+      },
+      "mat-line-light": {
+        "role": "neutral",
+        "displayName": "Mat Line (light)",
+        "canonical": "rgb(28, 72, 132)",
+        "cssVar": "--line",
+        "theme": "light",
+        "note": "Translucent or channel-only value (CSS stores --line and --shade as bare r, g, b and applies alpha at use); no ramp."
+      },
+      "mat-shade-light": {
+        "role": "neutral",
+        "displayName": "Mat Shade (light)",
+        "canonical": "rgb(20, 44, 80)",
+        "cssVar": "--shade",
+        "theme": "light",
+        "note": "Translucent or channel-only value (CSS stores --line and --shade as bare r, g, b and applies alpha at use); no ramp."
+      },
+      "mat-grid-light": {
+        "role": "neutral",
+        "displayName": "Mat Grid (light)",
+        "canonical": "rgba(28, 72, 132, 0.08)",
+        "cssVar": "--grid",
+        "theme": "light",
+        "note": "Translucent or channel-only value (CSS stores --line and --shade as bare r, g, b and applies alpha at use); no ramp."
+      },
+      "mat-grid-hi-light": {
+        "role": "neutral",
+        "displayName": "Mat Grid Heavy (light)",
+        "canonical": "rgba(28, 72, 132, 0.16)",
+        "cssVar": "--grid-hi",
+        "theme": "light",
+        "note": "Translucent or channel-only value (CSS stores --line and --shade as bare r, g, b and applies alpha at use); no ramp."
+      },
+      "accent-text-light": {
+        "role": "primary",
+        "displayName": "Pencil Text (light)",
+        "canonical": "#8a4f00",
+        "cssVar": "--accent-text",
+        "theme": "light",
+        "oklch": "oklch(48.6% 0.111 63.4)",
+        "tonalRamp": [
+          "#190500",
+          "#3d1d00",
+          "#653903",
+          "#8f5718",
+          "#b37b46",
+          "#d3a378",
+          "#f0c9a6",
+          "#ffe8cc"
+        ]
+      },
+      "scrim-light": {
+        "role": "neutral",
+        "displayName": "Scrim (light)",
+        "canonical": "rgba(221, 232, 245, 0.97)",
+        "cssVar": "--scrim",
+        "theme": "light",
+        "note": "Translucent or channel-only value (CSS stores --line and --shade as bare r, g, b and applies alpha at use); no ramp."
+      },
+      "pencil": {
+        "role": "primary",
+        "displayName": "Pencil Barrel Yellow",
+        "canonical": "#f6c33b",
+        "cssVar": "--pencil",
+        "oklch": "oklch(84.1% 0.155 87.0)",
+        "tonalRamp": [
+          "#170700",
+          "#3a2100",
+          "#603e00",
+          "#8a5d00",
+          "#ad8200",
+          "#cda953",
+          "#eace8c",
+          "#ffecb9"
+        ]
+      },
+      "pencil-hover": {
+        "role": "primary",
+        "displayName": "Sharpened Yellow",
+        "canonical": "#ffd457",
+        "oklch": "oklch(88.5% 0.148 89.9)",
+        "tonalRamp": [
+          "#160800",
+          "#382200",
+          "#5d4000",
+          "#856000",
+          "#a88400",
+          "#c8ab59",
+          "#e7cf90",
+          "#ffedbb"
+        ]
+      },
+      "pencil-ink": {
+        "role": "neutral",
+        "displayName": "Pencil Lead",
+        "canonical": "#1d1a10",
+        "cssVar": "--pencil-ink",
+        "oklch": "oklch(21.8% 0.019 93.4)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#282620",
+          "#48453c",
+          "#69665b",
+          "#8c897e",
+          "#b1aea4",
+          "#d3d1c9",
+          "#f0eee8"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#2b2d31",
+        "cssVar": "--graphite",
+        "oklch": "oklch(29.7% 0.008 264.4)",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#252629",
+          "#434548",
+          "#64666a",
+          "#87898d",
+          "#acaeb2",
+          "#cfd1d4",
+          "#edeef1"
+        ]
+      },
+      "graphite-deep": {
+        "role": "neutral",
+        "displayName": "Graphite Deep",
+        "canonical": "#111214",
+        "oklch": "oklch(18.2% 0.004 264.5)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#262628",
+          "#444547",
+          "#656668",
+          "#88898b",
+          "#adaeb0",
+          "#d0d1d3",
+          "#eeeef0"
+        ]
+      },
+      "board": {
+        "role": "neutral",
+        "displayName": "Hardboard Black",
+        "canonical": "#18191c",
+        "cssVar": "--board",
+        "oklch": "oklch(21.4% 0.006 271.1)",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#262628",
+          "#444548",
+          "#656669",
+          "#88898c",
+          "#adaeb1",
+          "#d0d1d3",
+          "#eeeef0"
+        ]
+      },
+      "board-ink": {
+        "role": "neutral",
+        "displayName": "Cover Chalk",
+        "canonical": "#f4f1e8",
+        "oklch": "oklch(95.8% 0.012 91.5)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#282622",
+          "#47453f",
+          "#68665f",
+          "#8b8982",
+          "#b0aea8",
+          "#d2d1cc",
+          "#f0eeea"
+        ]
+      },
+      "kraft": {
+        "role": "neutral",
+        "displayName": "Kraft Board",
+        "canonical": "#b8a785",
+        "cssVar": "--kraft",
+        "oklch": "oklch(73.4% 0.051 84.5)",
+        "tonalRamp": [
+          "#100a02",
+          "#2e2514",
+          "#4f432c",
+          "#736446",
+          "#96876a",
+          "#b9ad94",
+          "#dad0bc",
+          "#f6eede"
+        ]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Sketch Paper",
+        "canonical": "#f7f7f6",
+        "oklch": "oklch(97.6% 0.001 106.4)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#262626",
+          "#454544",
+          "#666665",
+          "#898988",
+          "#aeaead",
+          "#d1d1d0",
+          "#eeeeee"
+        ]
+      },
+      "sheet-back": {
+        "role": "neutral",
+        "displayName": "Paper Reverse",
+        "canonical": "#efeeea",
+        "oklch": "oklch(94.9% 0.005 95.1)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#272625",
+          "#464542",
+          "#676663",
+          "#8a8986",
+          "#afaeab",
+          "#d1d1cf",
+          "#efeeed"
+        ]
+      },
+      "gallery-mat": {
+        "role": "neutral",
+        "displayName": "Gallery Mat White",
+        "canonical": "#f6f5f1",
+        "oklch": "oklch(97.0% 0.005 95.1)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#272625",
+          "#464542",
+          "#676663",
+          "#8a8986",
+          "#afaeab",
+          "#d1d1cf",
+          "#efeeed"
+        ]
+      },
+      "label": {
+        "role": "neutral",
+        "displayName": "Label Card",
+        "canonical": "#fbfaf6",
+        "cssVar": "--label",
+        "oklch": "oklch(98.5% 0.005 95.1)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#272625",
+          "#464542",
+          "#676663",
+          "#8a8986",
+          "#aeaeab",
+          "#d1d1cf",
+          "#efeeed"
+        ]
+      },
+      "label-red": {
+        "role": "tertiary",
+        "displayName": "Label Red",
+        "canonical": "#c62a35",
+        "cssVar": "--label-red",
+        "oklch": "oklch(54.2% 0.191 23.2)",
+        "tonalRamp": [
+          "#250000",
+          "#520006",
+          "#830c1a",
+          "#b72530",
+          "#dd5656",
+          "#fa8884",
+          "#ffb4af",
+          "#ffd8d3"
+        ]
+      },
+      "label-blue": {
+        "role": "tertiary",
+        "displayName": "Label Blue",
+        "canonical": "#2b4fa6",
+        "cssVar": "--label-blue",
+        "oklch": "oklch(45.2% 0.147 264.4)",
+        "tonalRamp": [
+          "#010727",
+          "#0f2252",
+          "#254182",
+          "#3d61b5",
+          "#6186d8",
+          "#8cadf2",
+          "#b5d1ff",
+          "#d8efff"
+        ]
+      },
+      "label-ink": {
+        "role": "tertiary",
+        "displayName": "Label Ink",
+        "canonical": "#1b2a4a",
+        "oklch": "oklch(28.9% 0.062 263.9)",
+        "tonalRamp": [
+          "#060b17",
+          "#1d2639",
+          "#38455f",
+          "#556688",
+          "#7889ab",
+          "#9faecb",
+          "#c5d1e9",
+          "#e5efff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Section headings on the mat."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Open page title in the caption and close-view bar."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "\"PALS\" in the masthead stamp."
+      },
+      "title-sub": {
+        "displayName": "Title Sub",
+        "purpose": "\"Art Gallery\" half of the masthead stamp, in Pencil Text."
+      },
+      "wall-title": {
+        "displayName": "Wall Title",
+        "purpose": "Drawing title on a gallery wall label."
+      },
+      "hand": {
+        "displayName": "Hand",
+        "purpose": "The artist's name only (About section; cover label in container units)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text."
+      },
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "About paragraphs, max 62ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, nav, ruler numbers."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Wall-label metadata and footer."
+      },
+      "button-stamp": {
+        "displayName": "Button Stamp",
+        "purpose": "Pencil buttons only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "pad-on-mat",
+        "value": "0 1px 0 #e9e6de, 0 2px 0 #d9d5cb, 0 3px 0 #e9e6de, 0 4px 0 #cfcabf, 0 5px 1px #2d2a24, 0 18px 30px -8px rgba(var(--shade), 0.55), 0 40px 70px -20px rgba(var(--shade), 0.5)",
+        "purpose": "Page-block edges under the pad, then its soft shadow on the mat."
+      },
+      {
+        "name": "hung-frame",
+        "value": "0 0 0 clamp(5px, 0.6vw, 8px) var(--board), 0 2px 3px rgba(var(--shade), 0.5), 0 22px 36px -14px rgba(var(--shade), 0.8)",
+        "purpose": "Black frame rail plus wall shadow for gallery drawings."
+      },
+      {
+        "name": "hung-frame-hover",
+        "value": "0 0 0 clamp(5px, 0.6vw, 8px) var(--board), 0 4px 6px rgba(var(--shade), 0.45), 0 30px 44px -16px rgba(var(--shade), 0.85)",
+        "purpose": "Frame lifted 4px on hover."
+      },
+      {
+        "name": "name-label",
+        "value": "0 0 0 0.6cqw var(--label), 0 0 0 0.95cqw var(--label-red), 0 0.6cqh 1.4cqh rgba(0, 0, 0, 0.5)",
+        "purpose": "Red outer ring and contact shadow of the cover name label."
+      },
+      {
+        "name": "close-up-print",
+        "value": "0 24px 60px -20px rgba(0, 0, 0, 0.8)",
+        "purpose": "Drawing in the close view over the scrim."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-house",
+        "value": "cubic-bezier(0.22, 0.8, 0.26, 1)",
+        "purpose": "All CSS transitions; pad rotation; theme background change (300ms)."
+      },
+      {
+        "name": "control-transition",
+        "value": "160ms",
+        "purpose": "Button, nav, toggle colour changes."
+      },
+      {
+        "name": "page-turn",
+        "value": "760ms, cubic ease-out (1 - (1 - t)^3)",
+        "purpose": "One page turning about the spiral."
+      },
+      {
+        "name": "turn-stagger",
+        "value": "110ms",
+        "purpose": "Per-sheet delay on multi-page jumps."
+      },
+      {
+        "name": "pad-rotate",
+        "value": "720ms after a 380ms delay",
+        "purpose": "Quarter-turn of the pad for portrait drawings."
+      },
+      {
+        "name": "frame-lift",
+        "value": "260ms",
+        "purpose": "Gallery frame hover lift."
+      },
+      {
+        "name": "close-rise",
+        "value": "420ms",
+        "purpose": "Close-view image rising in."
+      },
+      {
+        "name": "reduced-motion-fade",
+        "value": "220ms ease-out opacity 0.15 to 1",
+        "purpose": "Replaces turns and rotation under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "560px"
+      },
+      {
+        "name": "about-name-inline",
+        "value": "900px"
+      },
+      {
+        "name": "tiny",
+        "value": "360px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Pencil Button",
+      "kind": "button",
+      "refersTo": "button-pencil",
+      "description": "The one primary action per control bar: flat pencil yellow, stamped uppercase.",
+      "html": "<button class=\"ds-btn-pencil\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 3h6v6\"/><path d=\"M9 21H3v-6\"/><path d=\"M21 3l-7 7\"/><path d=\"M3 21l7-7\"/></svg>Look closer</button>",
+      "css": ".ds-btn-pencil { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border: 1.5px solid transparent; border-radius: 4px; background: var(--pencil, #f6c33b); color: var(--pencil-ink, #1d1a10); font-family: var(--stamp, 'Big Shoulders Display', 'Arial Narrow', sans-serif); font-weight: 800; font-size: 1.125rem; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: background-color 160ms cubic-bezier(0.22, 0.8, 0.26, 1), transform 160ms cubic-bezier(0.22, 0.8, 0.26, 1); } .ds-btn-pencil:hover { background-color: #ffd457; } .ds-btn-pencil:active { transform: translateY(1px); } .ds-btn-pencil:focus-visible { outline: 2px solid var(--pencil, #f6c33b); outline-offset: 3px; }"
+    },
+    {
+      "name": "Icon Button",
+      "kind": "button",
+      "refersTo": "button-icon",
+      "description": "Previous / next / zoom on the mat: transparent square with a mat-line border.",
+      "html": "<button class=\"ds-btn-icon\" aria-label=\"Next page\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5l7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-icon { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border-radius: 4px; background: transparent; color: var(--mat-ink, #f0f5fc); border: 1.5px solid rgba(var(--line, 200, 222, 250), 0.4); cursor: pointer; transition: background-color 160ms cubic-bezier(0.22, 0.8, 0.26, 1), border-color 160ms cubic-bezier(0.22, 0.8, 0.26, 1); } .ds-btn-icon:hover { background: rgba(var(--line, 200, 222, 250), 0.12); border-color: var(--mat-ink, #f0f5fc); } .ds-btn-icon:active { transform: translateY(1px); } .ds-btn-icon:disabled { opacity: 0.38; cursor: not-allowed; } .ds-btn-icon:focus-visible { outline: 2px solid var(--pencil, #f6c33b); outline-offset: 3px; }"
+    },
+    {
+      "name": "Dark Button",
+      "kind": "button",
+      "refersTo": "button-dark",
+      "description": "Graphite button, only on the kraft end page.",
+      "html": "<div class=\"ds-kraft\"><button class=\"ds-btn-dark\">Back to the cover</button></div>",
+      "css": ".ds-kraft { background: var(--kraft, #b8a785); padding: 24px; } .ds-btn-dark { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1.5px solid transparent; border-radius: 4px; background: var(--graphite, #2b2d31); color: #f3efe6; font-family: var(--body, 'Familjen Grotesk Variable', 'Helvetica Neue', Arial, sans-serif); font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: background-color 160ms cubic-bezier(0.22, 0.8, 0.26, 1); } .ds-btn-dark:hover { background: #111214; } .ds-btn-dark:focus-visible { outline: 2px solid var(--graphite, #2b2d31); outline-offset: 3px; }"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "refersTo": "theme-toggle",
+      "description": "Stamp left, links and the circular theme toggle right, sitting straight on the mat.",
+      "html": "<header class=\"ds-mast\"><a class=\"ds-stamp\" href=\"#\"><span class=\"ds-stamp-name\">PALS</span><span class=\"ds-stamp-rule\"></span><span class=\"ds-stamp-what\">Art Gallery</span></a><nav class=\"ds-nav\"><a href=\"#\">Gallery</a><a href=\"#\">About</a><a href=\"#\">Portfolio</a><button class=\"ds-toggle\" aria-label=\"Switch to light mode\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/></svg></button></nav></header>",
+      "css": ".ds-mast { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; padding: 0 24px; background: var(--mat, #1c4c8a); color: var(--mat-ink, #f0f5fc); } .ds-stamp { display: inline-flex; align-items: center; gap: 10px; font-family: var(--stamp, 'Big Shoulders Display', 'Arial Narrow', sans-serif); font-weight: 800; font-size: 1.375rem; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; color: inherit; } .ds-stamp-name { font-size: 1.75rem; letter-spacing: 0.14em; line-height: 1; } .ds-stamp-rule { width: 22px; height: 2px; background: currentColor; opacity: 0.6; } .ds-stamp-what { color: var(--accent-text, #ffd766); } .ds-nav { display: flex; align-items: center; gap: 24px; font-family: var(--body, 'Familjen Grotesk Variable', 'Helvetica Neue', Arial, sans-serif); font-size: 0.9375rem; font-weight: 500; } .ds-nav a { color: var(--mat-ink-2, #c8d9f0); text-decoration: none; padding: 10px 0; transition: color 160ms cubic-bezier(0.22, 0.8, 0.26, 1); } .ds-nav a:hover { color: var(--mat-ink, #f0f5fc); text-decoration: underline; text-underline-offset: 0.22em; } .ds-toggle { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid rgba(var(--line, 200, 222, 250), 0.35); background: transparent; color: var(--mat-ink, #f0f5fc); cursor: pointer; transition: background-color 160ms, border-color 160ms; } .ds-toggle:hover { background: rgba(var(--line, 200, 222, 250), 0.12); border-color: var(--mat-ink, #f0f5fc); } .ds-nav a:focus-visible, .ds-toggle:focus-visible { outline: 2px solid var(--pencil, #f6c33b); outline-offset: 3px; }"
+    },
+    {
+      "name": "Edge Ruler",
+      "kind": "nav",
+      "refersTo": "ruler-mark-current",
+      "description": "The mat edge ruler as page index; the current page wears a pencil tick and chip.",
+      "html": "<nav class=\"ds-ruler\"><ol><li><button><span class=\"t\"></span><span class=\"n\">C</span></button></li><li><button><span class=\"t\"></span><span class=\"n\">1</span></button></li><li><button aria-current=\"page\"><span class=\"t\"></span><span class=\"n\">2</span></button></li><li><button><span class=\"t\"></span><span class=\"n\">3</span></button></li><li><button><span class=\"t\"></span><span class=\"n\">4</span></button></li><li><button><span class=\"t\"></span><span class=\"n\">5</span></button></li></ol></nav>",
+      "css": ".ds-ruler { background: var(--mat, #1c4c8a); padding: 0 16px 8px; border-top: 1px solid rgba(var(--line, 200, 222, 250), 0.15); } .ds-ruler ol { list-style: none; margin: 0; padding: 0; display: flex; background: repeating-linear-gradient(90deg, rgba(var(--line, 200, 222, 250), 0.42) 0 1px, transparent 1px calc(100% / 24)) top left / 100% 7px no-repeat; } .ds-ruler li { flex: 1; } .ds-ruler button { appearance: none; border: 0; background: none; width: 100%; min-height: 48px; padding: 0; display: grid; justify-items: center; align-content: start; color: var(--mat-ink-2, #c8d9f0); font-family: var(--body, 'Familjen Grotesk Variable', 'Helvetica Neue', Arial, sans-serif); font-weight: 600; font-size: 0.875rem; font-variant-numeric: tabular-nums; cursor: pointer; } .ds-ruler .t { width: 1.5px; height: 14px; background: rgba(var(--line, 200, 222, 250), 0.75); transition: height 200ms cubic-bezier(0.22, 0.8, 0.26, 1); } .ds-ruler .n { margin-top: 3px; min-width: 26px; padding: 1px 4px; border-radius: 3px; line-height: 1.3; } .ds-ruler button:hover { color: var(--mat-ink, #f0f5fc); } .ds-ruler button:hover .t { height: 18px; background: var(--mat-ink, #f0f5fc); } .ds-ruler button[aria-current] .t { height: 20px; width: 2.5px; background: var(--pencil, #f6c33b); } .ds-ruler button[aria-current] .n { background: var(--pencil, #f6c33b); color: var(--pencil-ink, #1d1a10); } .ds-ruler button:focus-visible { outline: 2px solid var(--pencil, #f6c33b); outline-offset: -2px; }"
+    },
+    {
+      "name": "Gallery Frame",
+      "kind": "card",
+      "refersTo": "gallery-frame",
+      "description": "A drawing hung in a black frame with a white mat, with a museum wall label.",
+      "html": "<figure class=\"ds-hang\"><button class=\"ds-frame\" aria-label=\"Turn to page 7\"><span class=\"ds-art\"></span></button><p class=\"ds-wall\"><b>Goku Super Saiyan 3</b><span>Dragon Ball Z · Pencil</span><span class=\"ds-pno\">Page 07</span></p></figure>",
+      "css": ".ds-hang { margin: 0; padding: 32px; width: 300px; background: var(--mat, #1c4c8a); } .ds-frame { appearance: none; display: block; width: 100%; padding: clamp(10px, 1.6vw, 18px); border: 0; background: #f6f5f1; cursor: pointer; box-shadow: 0 0 0 clamp(5px, 0.6vw, 8px) var(--board, #18191c), 0 2px 3px rgba(var(--shade, 3, 12, 30), 0.5), 0 22px 36px -14px rgba(var(--shade, 3, 12, 30), 0.8); transition: transform 260ms cubic-bezier(0.22, 0.8, 0.26, 1), box-shadow 260ms cubic-bezier(0.22, 0.8, 0.26, 1); } .ds-frame:hover { transform: translateY(-4px); box-shadow: 0 0 0 clamp(5px, 0.6vw, 8px) var(--board, #18191c), 0 4px 6px rgba(var(--shade, 3, 12, 30), 0.45), 0 30px 44px -16px rgba(var(--shade, 3, 12, 30), 0.85); } .ds-frame:focus-visible { outline: 2px solid var(--pencil, #f6c33b); outline-offset: 12px; } .ds-art { display: block; aspect-ratio: 1.4; background: #f7f7f6; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08); } .ds-wall { margin: 22px 0 0; display: grid; gap: 2px; font-family: var(--body, 'Familjen Grotesk Variable', 'Helvetica Neue', Arial, sans-serif); font-size: 0.875rem; line-height: 1.35; color: var(--mat-ink-2, #c8d9f0); } .ds-wall b { font-family: var(--stamp, 'Big Shoulders Display', 'Arial Narrow', sans-serif); font-weight: 800; font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.02em; color: var(--mat-ink, #f0f5fc); } .ds-pno { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--accent-text, #ffd766); }"
+    },
+    {
+      "name": "Cover",
+      "kind": "custom",
+      "refersTo": "cover-band",
+      "description": "The sketchbook cover: PALS stamp, name label, pencil-yellow SKETCH BOOK band, 297 mm dimension line, elastic strap.",
+      "html": "<div class=\"ds-cover\"><div class=\"ds-head\"><span class=\"ds-brand\">PALS</span><span class=\"ds-vol\">Art Gallery · Vol. 01</span></div><div class=\"ds-label\"><div class=\"ds-row\"><span class=\"ds-key\">Name</span><span class=\"ds-name\">Priyam</span></div><div class=\"ds-row\"><span class=\"ds-key\">Subject</span><span class=\"ds-val\">Anime sketches</span></div></div><div class=\"ds-band\"><span class=\"ds-title\">Sketch Book</span><span class=\"ds-spec\"><span>A4 landscape</span><span>120 gsm · 13 drawings</span></span></div><div class=\"ds-dim\"><span class=\"ds-dl\"></span><span>297 mm</span><span class=\"ds-dl\"></span></div><span class=\"ds-strap\"></span></div>",
+      "css": ".ds-cover { position: relative; width: 560px; height: 400px; container-type: size; overflow: hidden; border-radius: 2px; background: var(--board, #18191c) radial-gradient(120% 90% at 30% 20%, rgba(255, 255, 255, 0.07), transparent 60%); } .ds-head { position: absolute; left: 6cqw; top: 9cqh; display: grid; gap: 1.2cqh; } .ds-brand { font-family: var(--stamp, 'Big Shoulders Display', 'Arial Narrow', sans-serif); font-weight: 800; font-size: 19cqh; line-height: 0.8; letter-spacing: 0.1em; color: #f4f1e8; } .ds-vol { font-family: var(--stamp, 'Big Shoulders Display', 'Arial Narrow', sans-serif); font-weight: 700; font-size: 3.6cqh; text-transform: uppercase; letter-spacing: 0.16em; color: var(--pencil, #f6c33b); } .ds-label { position: absolute; right: 15cqw; top: 10cqh; width: 34cqw; padding: 2.4cqh 2.4cqw 2cqh; background: #fbfaf6; border: 0.3cqw solid #2b4fa6; border-radius: 1.2cqw; box-shadow: 0 0 0 0.6cqw #fbfaf6, 0 0 0 0.95cqw #c62a35, 0 0.6cqh 1.4cqh rgba(0, 0, 0, 0.5); transform: rotate(2deg); display: grid; gap: 1cqh; } .ds-row { display: grid; grid-template-columns: 8.5cqw 1fr; align-items: end; gap: 0.8cqw; border-bottom: 0.2cqh dashed rgba(43, 79, 166, 0.55); min-height: 6cqh; } .ds-key { font-family: var(--stamp, 'Big Shoulders Display', 'Arial Narrow', sans-serif); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; font-size: 2.6cqh; color: #c62a35; padding-bottom: 0.6cqh; } .ds-name, .ds-val { font-family: 'Kalam', 'Segoe Print', cursive; font-weight: 700; line-height: 1; color: #1b2a4a; } .ds-name { font-size: 7.4cqh; transform: rotate(-3deg); transform-origin: left bottom; } .ds-val { font-size: 3.6cqh; white-space: nowrap; } .ds-band { position: absolute; left: 0; right: 0; top: 54cqh; height: 26cqh; padding: 0 6cqw; display: flex; align-items: center; justify-content: space-between; background: var(--pencil, #f6c33b); color: var(--pencil-ink, #1d1a10); } .ds-title { font-family: var(--stamp, 'Big Shoulders Display', 'Arial Narrow', sans-serif); font-weight: 800; font-size: 15.5cqh; line-height: 1; text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; } .ds-spec { display: grid; margin-right: 9cqw; text-align: right; font-family: var(--body, 'Familjen Grotesk Variable', Arial, sans-serif); font-weight: 600; font-size: 2.5cqh; line-height: 1.3; white-space: nowrap; } .ds-dim { position: absolute; left: 6cqw; right: 14cqw; bottom: 6cqh; height: 3cqh; display: flex; align-items: center; gap: 1.6cqw; color: rgba(244, 241, 232, 0.7); border-left: 1px solid currentColor; border-right: 1px solid currentColor; font-family: var(--body, 'Familjen Grotesk Variable', Arial, sans-serif); font-weight: 600; font-size: 2.3cqh; letter-spacing: 0.08em; } .ds-dl { flex: 1; border-top: 1px solid currentColor; } .ds-strap { position: absolute; top: 0; bottom: 0; right: 8cqw; width: 2.6cqw; background: linear-gradient(90deg, #08090b, #2a2c31 40%, #121316 70%, #050506); box-shadow: -0.5cqw 0 1cqw rgba(0, 0, 0, 0.45), 0.4cqw 0 0.8cqw rgba(0, 0, 0, 0.35); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Pad on the Cutting Mat",
+    "overview": "Every screen is a desk seen from above: a blue self-healing cutting mat with its printed grid and angle guides, and on it a black hardboard spiral pad whose pages are the scans themselves. The mat comes in two lights. Dark is a cobalt cutting mat; light is a pale blue drafting mat under daylight. Both are the same object, so every token below exists as a pair and every component reads its colours from the mat. Nothing on screen pretends to be an interface panel: the ruler along the mat's edge is the page index, the stuck-on name label and the pencil-yellow band make the cover, and the one accent is the yellow barrel of an HB pencil.\n\nThe drawings lead. On the pad they are plain near-white paper with no overlay; below the desk, in The Gallery, each drawing hangs like a museum print, in a thin black frame with a white mat and a small wall label beneath. Type is set like the stamped lettering on a pencil barrel: condensed, heavy, uppercase, short. Running text is a quiet grotesk in pale blue ink. The artist's name is the one handwritten thing, set in a marker-style hand on the cover label and in the About section.\n\nDensity is low on the first screen (one book, one caption line, one ruler) and moderate below it (the gallery wall, then a short About band). Motion is physical: pages swing about the spiral with an ease-out and no bounce, and the whole pad rotates a quarter-turn for portrait drawings. With reduced motion, turns become a short fade.",
+    "keyCharacteristics": [
+      "Blue cutting mat with a 24px / 120px printed grid as the ground of every screen, in a dark cobalt and a light drafting-blue theme",
+      "Real objects as controls: spiral pad, name label, edge ruler, pencil-yellow buttons",
+      "Pencil yellow as the single accent; red and blue appear only on the cover's name label",
+      "Stamped condensed uppercase display type over a quiet grotesk body, with one handwritten name",
+      "Gallery drawings hung in black frames with white mats and museum wall labels",
+      "Paper-weight motion: ease-out turns about the top spiral, quarter-turn rotation for portrait pages"
+    ],
+    "rules": [
+      {
+        "name": "The One Pencil Rule",
+        "body": "Yellow is the only accent on the mat. It marks where you are (current page) and what to do next (one pencil button per bar). The cover band is the one large yellow fill, because it is printed on the object.",
+        "section": "colors"
+      },
+      {
+        "name": "The Paired Mat Rule",
+        "body": "Every colour that touches the mat is a theme pair driven by `html[data-theme]`. Objects (cover, paper, frames, label, pencil) are the same in both lights; only the mat, its ink, its printed lines, its shadows and Pencil Text change.",
+        "section": "colors"
+      },
+      {
+        "name": "The Label Owns Red and Blue Rule",
+        "body": "The name label's red and blue are an object's printed ink, not a palette. They do not appear on the mat, in buttons, or in text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stamped Caps Rule",
+        "body": "The display face is always uppercase, heavy (700 to 800) and short: a title, a page name, a field key, a button verb. Paragraphs, captions and metadata are never set in it.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Hand Rule",
+        "body": "The handwritten face sets only the artist's name and the label's handwritten values. It replaces the old signature image; it is never used for headings or UI.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Digit Rule",
+        "body": "Page numbers are zero-padded with tabular figures (\"page 01 of 13\", \"Page 07\") so the index reads like a numbered pad.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mat Shade Rule",
+        "body": "Shadows on the mat use the theme's Mat Shade, never neutral grey, and are always soft and offset downward, as light falls on a desk. The page-block lines under the pad are the only zero-blur offsets, because they draw paper edges.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** put every surface on the cutting mat (mat with its 24px/120px grid); new sections are bands of the same mat, recessed with Deep Mat at most.",
+      "**Do** define every mat-facing colour for both `data-theme=\"dark\"` and `data-theme=\"light\"`, and take shadows and lines from Mat Shade and Mat Line through alpha.",
+      "**Do** make controls out of desk objects already in the world (ruler, label, pencil-yellow) before reaching for generic UI.",
+      "**Do** keep one pencil button per control bar, with Pencil Lead text.",
+      "**Do** show drawings at their true aspect ratio, uncropped, on plain paper in the book and in a black frame with a white mat on the gallery wall.",
+      "**Do** turn pages about the top spiral with the house ease (cubic-bezier(0.22, 0.8, 0.26, 1)) and no overshoot; fade under reduced motion.",
+      "**Do** zero-pad page numbers with tabular figures."
+    ],
+    "donts": [
+      "**Don't** add overlays, gradients or hover captions on top of a drawing.",
+      "**Don't** introduce a second accent; red and blue stay on the name label.",
+      "**Don't** use neutral grey or hard-edged offset shadows on the mat; shadows are soft and Mat Shade tinted.",
+      "**Don't** set paragraphs or metadata in the stamped display face, or set it in lowercase.",
+      "**Don't** use the hand face for anything but the artist's name and the label's handwritten values.",
+      "**Don't** add bounce or spring to page turns or the pad's rotation.",
+      "**Don't** put pages or frames in rounded cards; paper corners stay at 2px or square."
+    ]
+  }
+}

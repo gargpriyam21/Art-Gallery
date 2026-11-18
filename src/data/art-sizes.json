@@ -1,0 +1,67 @@
+{
+  "cc": {
+    "width": 751,
+    "height": 537,
+    "paper": "#63bbe6"
+  },
+  "future-trunks": {
+    "width": 750,
+    "height": 1033,
+    "paper": "#f8f8fb"
+  },
+  "gohan-ssj2": {
+    "width": 750,
+    "height": 1033,
+    "paper": "#f7f7f9"
+  },
+  "goku-and-vegeta": {
+    "width": 2400,
+    "height": 1714,
+    "paper": "#f8f8f9"
+  },
+  "goku-ssj3": {
+    "width": 551,
+    "height": 753,
+    "paper": "#f6f6f7"
+  },
+  "gotenks-ssj3": {
+    "width": 750,
+    "height": 909,
+    "paper": "#fefefe"
+  },
+  "ken-kaneki": {
+    "width": 1743,
+    "height": 2400,
+    "paper": "#f7f7f7"
+  },
+  "l": {
+    "width": 750,
+    "height": 537,
+    "paper": "#f8f8fa"
+  },
+  "majin-vegeta": {
+    "width": 750,
+    "height": 543,
+    "paper": "#f6f5f8"
+  },
+  "roy-mustang": {
+    "width": 2400,
+    "height": 1687,
+    "paper": "#efeff7"
+  },
+  "shinobu-kocho": {
+    "width": 2400,
+    "height": 1714,
+    "paper": "#e9ddf4"
+  },
+  "vegeta-sacrifice": {
+    "width": 750,
+    "height": 545,
+    "paper": "#f7f7f9"
+  },
+  "vegitto": {
+    "width": 750,
+    "height": 1038,
+    "paper": "#f8f8f8"
+  }
+}
