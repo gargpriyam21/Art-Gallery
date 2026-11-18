@@ -294,6 +294,7 @@ p {
 .sheets {
   position: absolute;
   inset: 0;
+  pointer-events: none; /* turning is handled on .book; never cover the back page's links */
   perspective-origin: 50% 0;
 }
 
@@ -559,7 +560,172 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
+  align-items: center;
+  gap: 5cqh 6cqw;
+}
+
+/* sticky note: squared, slightly curled, tape on top */
+.note {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  position: relative;
+  width: 30cqw;
+  min-height: 30cqh;
+  padding: 4cqh 2.4cqw 3cqh;
+  display: grid;
+  justify-items: start;
+  align-content: center;
+  gap: 0.6cqh;
+  text-align: left;
+  font: inherit;
+  color: #2a2410;
+  background: linear-gradient(170deg, #ffe680 0%, #fcd34d 70%, #f2c43a 100%);
+  border-bottom-right-radius: 3cqw 1.2cqh;
+  rotate: -4deg;
+  box-shadow:
+    0 0.4cqh 0.6cqh rgba(40, 30, 10, 0.25),
+    0 2.4cqh 3cqh -1.2cqh rgba(40, 30, 10, 0.45);
+  transition: rotate 300ms var(--ease), translate 300ms var(--ease), box-shadow 300ms var(--ease);
+}
+.note::before {
+  content: '';
+  position: absolute;
+  top: -1.6cqh;
+  left: 50%;
+  width: 9cqw;
+  height: 3.6cqh;
+  translate: -50% 0;
+  rotate: 3deg;
+  background: rgba(240, 232, 205, 0.85);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+}
+.note__arrow {
+  width: 6cqw;
+  height: auto;
+  fill: none;
+  stroke: #2a2410;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: rotate 400ms var(--ease);
+}
+.note__text {
+  font-family: var(--hand);
+  font-weight: 700;
+  font-size: 5.6cqh;
+  line-height: 1.05;
+}
+.note__sub {
+  font-family: var(--hand);
+  font-weight: 700;
+  font-size: 2.8cqh;
+  opacity: 0.7;
+}
+.note:hover,
+.note:focus-visible {
+  rotate: 0deg;
+  translate: 0 -0.8cqh;
+  box-shadow:
+    0 0.6cqh 0.8cqh rgba(40, 30, 10, 0.25),
+    0 4cqh 4.4cqh -1.6cqh rgba(40, 30, 10, 0.5);
+}
+.note:hover .note__arrow {
+  rotate: -40deg;
+}
+
+/* blueprint card: grid paper, white line work, a drawing's title block */
+.blueprint {
+  position: relative;
+  width: 34cqw;
+  min-height: 30cqh;
+  padding: 3.4cqh 2.4cqw 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: start;
+  gap: 1cqh;
+  text-decoration: none;
+  color: #f2f7ff;
+  background-color: #1c4c8a;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 5cqh 5cqh, 5cqh 5cqh, 1cqh 1cqh, 1cqh 1cqh;
+  outline: 1px solid rgba(255, 255, 255, 0.55);
+  outline-offset: -1.2cqh;
+  rotate: 3deg;
+  box-shadow:
+    0 0.4cqh 0.6cqh rgba(10, 20, 40, 0.3),
+    0 2.4cqh 3cqh -1.2cqh rgba(10, 20, 40, 0.5);
+  transition: rotate 300ms var(--ease), translate 300ms var(--ease), box-shadow 300ms var(--ease);
+}
+.blueprint__gear {
+  width: 6.4cqw;
+  height: auto;
+  fill: none;
+  stroke: #f2f7ff;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  transition: rotate 900ms var(--ease);
+}
+.blueprint__text {
+  font-family: var(--stamp);
+  font-weight: 800;
+  font-size: 5.4cqh;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-align: left;
+  align-self: center;
+}
+.blueprint__text svg {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: 0.15em;
+  vertical-align: -0.02em;
+  transition: translate 300ms var(--ease);
+}
+.blueprint:hover .blueprint__text svg {
+  translate: 0.12em -0.12em;
+}
+.blueprint__block {
+  justify-self: stretch;
+  margin: 0 -2.4cqw;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.55);
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 2.2cqh;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(242, 247, 255, 0.85);
+}
+.blueprint__block span {
+  padding: 1cqh 2.4cqw 1.6cqh;
+}
+.blueprint__block span + span {
+  border-left: 1px solid rgba(255, 255, 255, 0.55);
+}
+.blueprint:hover,
+.blueprint:focus-visible {
+  rotate: 0deg;
+  translate: 0 -0.8cqh;
+  box-shadow:
+    0 0.6cqh 0.8cqh rgba(10, 20, 40, 0.3),
+    0 4cqh 4.4cqh -1.6cqh rgba(10, 20, 40, 0.55);
+}
+.blueprint:hover .blueprint__gear {
+  rotate: 120deg;
+}
+.note:focus-visible,
+.blueprint:focus-visible {
+  outline: 3px solid var(--graphite);
+  outline-offset: 4px;
 }
 
 /* ---------- spiral ---------- */

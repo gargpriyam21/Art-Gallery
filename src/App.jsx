@@ -258,9 +258,29 @@ function EndPage({ onRestart }) {
     <div className="end">
       <p className="end__big">That’s the last page, for now.</p>
       <div className="end__actions">
-        <button type="button" className="btn btn--dark" onClick={onRestart}>Back to the cover</button>
-        <a className="btn btn--dark" href={ARTIST.portfolio}>
-          The engineering side <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" />
+        {/* a sticky note stuck to the inside cover */}
+        <button type="button" className="note" onClick={onRestart}>
+          <svg className="note__arrow" viewBox="0 0 60 44" aria-hidden="true">
+            <path d="M48 36 C 60 20, 44 4, 26 6 C 12 7, 6 16, 8 26" />
+            <path d="M2 19 L8 27 L15 20" />
+          </svg>
+          <span className="note__text">Back to the cover</span>
+          <span className="note__sub">start again from page one</span>
+        </button>
+        {/* an engineering drawing card, title block and all */}
+        <a className="blueprint" href={ARTIST.portfolio}>
+          <svg className="blueprint__gear" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="7" />
+            <path d="M24 4v7M24 37v7M4 24h7M37 24h7M9.9 9.9l5 5M33.1 33.1l5 5M9.9 38.1l5-5M33.1 14.9l5-5" />
+            <circle cx="24" cy="24" r="14" />
+          </svg>
+          <span className="blueprint__text">
+            The engineering side <ArrowUpRight size={18} strokeWidth={2.5} aria-hidden="true" />
+          </span>
+          <span className="blueprint__block" aria-hidden="true">
+            <span>Dwg: Portfolio</span>
+            <span>Sheet 2 of 2</span>
+          </span>
         </a>
       </div>
     </div>
